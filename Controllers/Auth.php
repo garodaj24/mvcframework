@@ -11,8 +11,8 @@
             echo "inside login";
         }
 
-        public function verification() {
-            echo "inside verification";
+        public function verification($x, $y) {
+            echo "inside verification $x and $y";
         }
     }
 

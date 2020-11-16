@@ -13,7 +13,8 @@
                         if (isset($uri[1]) && $uri[1] !== '') {
                             $method = $uri[1];
                             if (method_exists($ctrl_obj, $method)) {
-                                $ctrl_obj->{$method}();
+                                $params = array_slice($uri, 2);
+                                call_user_func_array(array($ctrl_obj, $method), $params);
                             } else {
                                 throw new \Exception("The method $uri[1] does not exist in the class $uri[0]");
                             }
