@@ -1,5 +1,5 @@
 <?php
 
-    echo "render verification";
+    echo "render verification" . $_POST['email'];
 
 ?>

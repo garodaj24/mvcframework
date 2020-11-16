@@ -10,12 +10,17 @@
         }
 
         public function login() {
-            echo "inside login";
+            $this->view->render("Login");
         }
 
-        public function verification($x, $y) {
-            $this->view->render("Verification");
+        public function registration() {
+            $this->view->render("Registration");
+        }
+
+        public function verification() {
+            echo $_POST['email'];
+            echo "</br>";
+            echo $_POST['password'];
         }
     }
-
 ?>
