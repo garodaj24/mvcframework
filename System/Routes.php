@@ -2,15 +2,14 @@
 
     namespace System;
 
-    use \Controllers\Auth;
-
     class Routes {
         public function __construct($uri) {
             try {
                 if (isset($uri[0]) && $uri[0] !== '') {
                     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "Controllers/$uri[0].php")) {
                         if (class_exists("\\Controllers\\$uri[0]")) {
-                            $route = new Auth;
+                            $className = "\\Controllers\\$uri[0]";
+                            $route = new $className;
                             if (isset($uri[1]) && $uri[1] !== '') {
                                 if (method_exists($route, $uri[1])) {
                                     $route->{$uri[1]}();
