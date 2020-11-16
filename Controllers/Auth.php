@@ -2,7 +2,9 @@
 
     namespace Controllers;
 
-    class Auth {
+    use \System\Controller;
+
+    class Auth extends Controller {
         public function index() {
             echo "inside Auth index";
         }
@@ -12,7 +14,7 @@
         }
 
         public function verification($x, $y) {
-            echo "inside verification $x and $y";
+            $this->view->render("Verification");
         }
     }
 
