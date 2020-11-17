@@ -10,17 +10,15 @@
         }
 
         public function login() {
-            $this->view->render("Login");
+            $this->view->render("Login", false);
         }
 
         public function registration() {
-            $this->view->render("Registration");
+            $this->view->render("Registration", false);
         }
 
         public function verification() {
-            echo $_POST['email'];
-            echo "</br>";
-            echo $_POST['password'];
+            $this->view->render("Verification");
         }
     }
 ?>
