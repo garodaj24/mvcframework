@@ -6,7 +6,7 @@
         public function __construct($uri) {
             try {
                 $ctrl = (isset($uri[0]) && $uri[0] !== '') ? ucfirst($uri[0]) : "Home";
-                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "Controllers/$ctrl.php")) {
+                if (file_exists("Controllers/$ctrl.php")) {
                     if (class_exists("\\Controllers\\$ctrl")) {
                         $className = "\\Controllers\\$ctrl";
                         $ctrl_obj = new $className;
