@@ -5,15 +5,15 @@
     class View {
         public function render($filename, $layout=true) {
             try {
-                if (file_exists($_SERVER['DOCUMENT_ROOT'] . "Views/$filename.php")) {
+                if (file_exists("Views/$filename.php")) {
                     if ($layout) {
-                        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "Views/layout/Header.php") && file_exists($_SERVER['DOCUMENT_ROOT'] . "Views/layout/Footer.php")) {
-                            include $_SERVER['DOCUMENT_ROOT'] . "Views/layout/Header.php";
-                            include $_SERVER['DOCUMENT_ROOT'] . "Views/$filename.php";
-                            include $_SERVER['DOCUMENT_ROOT'] . "Views/layout/Footer.php";
-                        } else {
-                            include $_SERVER['DOCUMENT_ROOT'] . "Views/$filename.php";
+                        if (file_exists("Views/layout/Header.php") && file_exists("Views/layout/Footer.php")) {
+                            include "Views/layout/Header.php";
+                            include "Views/$filename.php";
+                            include "Views/layout/Footer.php";
                         }
+                    } else {
+                        include "Views/$filename.php";
                     }
                 } else {
                     throw new \Exception("The file Views/$filename.php does not exist");
