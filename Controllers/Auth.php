@@ -20,12 +20,16 @@
 
         public function registration() {
             if ($_POST) {
-                $user_model = new User;
-                $createUser = $user_model->createUser($_POST);
-                if ($createUser) {
-                    echo 'success';
+                if ($_POST['name'] !== '' && $_POST['email'] !== '' && $_POST['username'] !== '' && $_POST['password'] !== '') {
+                    $user_model = new User;
+                    $createUser = $user_model->createUser($_POST);
+                    if ($createUser) {
+                        echo 'success';
+                    } else {
+                        echo 'failed';
+                    }
                 } else {
-                    echo 'failed';
+                    echo 'please fill all the fields!';
                 }
             } else {
                 $this->view->render("Registration", false);
