@@ -15,6 +15,7 @@
         }
 
         public function login() {
+            unset($_SESSION['userID']);
             $this->view->render("Login", false);
         }
 

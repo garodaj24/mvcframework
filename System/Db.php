@@ -27,7 +27,7 @@
 
         public function insert($table, $data) {
             $data["password"] = md5($data['password']);
-            foreach ($data as $key => $value){
+            foreach ($data as $key => $value) {
                 $data[$key] = trim($value);
                 $data[$key] = stripslashes($value);
                 $data[$key] = htmlspecialchars($value);

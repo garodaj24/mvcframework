@@ -9,9 +9,12 @@
     <body>
         <div class="login-page">
             <div class="form">
-                <form method="POST" action="/auth/verification" class="login-form">
+                <form method="POST" action="/home" class="login-form">
                     <input type="text" name="email" placeholder="username"/>
                     <input type="password" name="password" placeholder="password"/>
+                    <?php 
+                        echo "<div class=login-error>".$_SESSION['loginError']."</div>";
+                    ?>
                     <button>login</button>
                     <p class="message">Not registered? <a href="/auth/registration">Create an account</a></p>
                 </form>

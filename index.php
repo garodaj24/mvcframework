@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     use System\Routes;
 
     spl_autoload_register(function ($class){

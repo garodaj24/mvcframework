@@ -98,3 +98,7 @@ body {
 .page-footer {
     background-color:white;
 }
+.login-error {
+    color: red;
+    margin-bottom: 15px;
+}
