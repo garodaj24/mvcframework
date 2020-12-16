@@ -7,14 +7,15 @@
 
     class Home extends Controller {
         public function index() {
+            unset($_SESSION['loginError']);
             if ($_POST) {
                 $user_model = new User;
                 $email = trim($_POST['email']);
                 $password = md5($_POST['password']);
-                $query = "SELECT id FROM users WHERE email='$email' AND password='$password'";
-                $user = $user_model->selectUser($query);
-                if ($user[0]['id']) {
-                    $_SESSION["userID"] = $user[0]['id'];
+                $userID = $user_model->login($email, $password);
+                if ($userID) {
+                    unset($_SESSION['loginError']);
+                    $_SESSION["userID"] = $userID;
                     header('Location: /account');
                 } else {
                     $_SESSION['loginError'] = "Please enter a valid email and password";

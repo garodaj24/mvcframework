@@ -17,9 +17,10 @@
             return $createUser;
         }
 
-        public function selectUser($query) {
-            $data = $this->db->select($query);
-            return $data;
+        public function login($email, $password) {
+            $query = "SELECT id FROM users WHERE email='$email' AND password='$password'";
+            $userID = $this->db->select($query);
+            return $userID[0]['id'];
         }
 
     }

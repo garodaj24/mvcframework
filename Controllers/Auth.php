@@ -31,7 +31,7 @@
                         echo 'failed';
                     }
                 } else {
-                    echo 'please fill all the fields!';
+                    $this->view->render("Registration", false);
                 }
             } else {
                 $this->view->render("Registration", false);
