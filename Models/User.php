@@ -19,7 +19,7 @@
 
         public function login($email, $password) {
             $query = "SELECT id FROM users WHERE email='$email' AND password='$password'";
-            $userID = $this->db->select($query);
+            $userID = $this->db->select($query, false);
             return $userID['id'];
         }
 

@@ -14,16 +14,16 @@
             }
         }
 
-        public function select($query) {
+        public function select($query, $multiple=true) {
             $result = $this->connection->query($query);
             $finalResult = [];
             if ($result->num_rows > 0) {
-                if ($result->num_rows === 1) {
-                    $finalResult = $result->fetch_assoc();
-                } else {
+                if ($multiple) {
                     while($row = $result->fetch_assoc()) {
                         array_push($finalResult,$row);
                     }
+                } else {
+                    $finalResult = $result->fetch_assoc();
                 }
             }
             return $finalResult;
