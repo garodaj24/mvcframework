@@ -18,8 +18,12 @@
             $result = $this->connection->query($query);
             $finalResult = [];
             if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    array_push($finalResult,$row);
+                if ($result->num_rows === 1) {
+                    $finalResult = $result->fetch_assoc();
+                } else {
+                    while($row = $result->fetch_assoc()) {
+                        array_push($finalResult,$row);
+                    }
                 }
             }
             return $finalResult;
