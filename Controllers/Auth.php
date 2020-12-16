@@ -17,6 +17,8 @@
         public function login() {
             unset($_SESSION['userID']);
             unset($_SESSION['loginError']);
+            unset($_SESSION['emailError']);
+            unset($_SESSION['passwordError']);
             $this->view->render("Login", false);
         }
 

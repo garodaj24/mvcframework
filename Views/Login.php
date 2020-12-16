@@ -10,8 +10,14 @@
         <div class="login-page">
             <div class="form">
                 <form method="POST" action="/home" class="login-form">
-                    <input type="text" name="email" placeholder="username"/>
+                    <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="email"/>
+                    <?php 
+                        echo "<div class=login-error>".$_SESSION['emailError']."</div>";
+                    ?>
                     <input type="password" name="password" placeholder="password"/>
+                    <?php 
+                        echo "<div class=login-error>".$_SESSION['passwordError']."</div>";
+                    ?>
                     <?php 
                         echo "<div class=login-error>".$_SESSION['loginError']."</div>";
                     ?>
