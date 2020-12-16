@@ -28,12 +28,14 @@
         public function insert($table, $data) {
             $data["password"] = md5($data['password']);
             foreach ($data as $key => $value) {
-                $data[$key] = trim($value);
-                $data[$key] = stripslashes($value);
-                $data[$key] = htmlspecialchars($value);
-                $data[$key] = $this->connection->real_escape_string($value);
+                if ($key !== "passwprd") {
+                    $data[$key] = trim($value);
+                    $data[$key] = stripslashes($value);
+                    $data[$key] = htmlspecialchars($value);
+                    $data[$key] = $this->connection->real_escape_string($value);
+                }
             }
-            $query = "INSERT INTO $table (" . implode(", ",array_keys($data)) . ") VALUES ('" . implode("',' ",$data) . "')";
+            $query = "INSERT INTO $table (".implode(", ",array_keys($data)).") VALUES ('".implode("', '",$data)."')";
             return $this->connection->query($query);
         }
 

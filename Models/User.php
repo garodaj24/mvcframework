@@ -17,6 +17,11 @@
             return $createUser;
         }
 
+        public function selectUser($query) {
+            $data = $this->db->select($query);
+            return $data;
+        }
+
     }
 
 ?>
