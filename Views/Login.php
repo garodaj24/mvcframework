@@ -12,14 +12,14 @@
                 <form method="POST" action="/home" class="login-form">
                     <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="email"/>
                     <?php 
-                        echo "<div class=login-error>".$_SESSION['emailError']."</div>";
+                        echo "<div class=login-error>".$this->emailError."</div>";
                     ?>
                     <input type="password" name="password" placeholder="password"/>
                     <?php 
-                        echo "<div class=login-error>".$_SESSION['passwordError']."</div>";
+                        echo "<div class=login-error>".$this->passwordError."</div>";
                     ?>
                     <?php 
-                        echo "<div class=login-error>".$_SESSION['loginError']."</div>";
+                        echo "<div class=login-error>".$this->loginError."</div>";
                     ?>
                     <button>login</button>
                     <p class="message">Not registered? <a href="/auth/registration">Create an account</a></p>

@@ -16,9 +16,6 @@
 
         public function login() {
             unset($_SESSION['userID']);
-            unset($_SESSION['loginError']);
-            unset($_SESSION['emailError']);
-            unset($_SESSION['passwordError']);
             $this->view->render("Login", false);
         }
 
@@ -28,16 +25,31 @@
                     $user_model = new User;
                     $createUser = $user_model->createUser($_POST);
                     if ($createUser) {
-                        echo 'success';
+                        $email = trim($_POST['email']);
+                        $password = md5($_POST['password']);
+                        $userID = $user_model->login($email, $password);
+                        $_SESSION["userID"] = $userID;
+                        header('Location: /account');
+                        exit;
                     } else {
-                        echo 'failed';
+                        $this->view->registrationError = "Something went wrong, try again later";
                     }
                 } else {
-                    $this->view->render("Registration", false);
+                    if ($_POST['name'] === '') {
+                        $this->view->nameError = "Name Required";
+                    }
+                    if ($_POST['email'] === '') {
+                        $this->view->emailError = "Email Required";
+                    }
+                    if ($_POST['username'] === '') {
+                        $this->view->usernameError = "Username Required";
+                    }
+                    if ($_POST['password'] === '') {
+                        $this->view->passwordError = "Password Required";
+                    }
                 }
-            } else {
-                $this->view->render("Registration", false);
             }
+            $this->view->render("Registration", false);
         }
 
         public function verification() {
