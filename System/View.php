@@ -23,6 +23,10 @@
                 echo 'Error: ' .$e->getMessage();
             }
         }
+    
+        public function __get($name) {
+            return null;
+        }
     }
 
 ?>

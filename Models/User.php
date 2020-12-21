@@ -23,6 +23,19 @@
             return $userID['id'];
         }
 
+        public function getUser($id) {
+            $query = "SELECT * FROM users WHERE id=$id";
+            $user = $this->db->select($query, false);
+            return $user;
+        }
+
+        public function updateUserImage($image, $id) {
+            $where = "id=$id";
+            $data = array("image" => $image);
+            $updateUserImage = $this->db->update("users", $data, $where);
+            return $updateUserImage;
+        }
+
     }
 
 ?>

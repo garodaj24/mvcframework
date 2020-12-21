@@ -29,8 +29,9 @@ CREATE TABLE `users` (
   `password` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `image` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +40,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Garod',' garodaj',' 3de070332d298e7c5a742f863a99fa64',' garod700@gmail.com','2020-12-11 12:01:08'),(2,'Garod\'s',' garodtest',' 682c38790ac1b5ce93d1cdd0fbc0d3aa',' garod@test.com','2020-12-11 12:02:01');
+INSERT INTO `users` VALUES (1,'Garod','garodaj','ae2b1fca515949e5d54fb22b8ed95575','garod700@gmail.com','2020-12-16 08:48:14',NULL),(2,'test','garodtest','098f6bcd4621d373cade4e832627b4f6','test@test.test','2020-12-16 09:02:43','01195E51-F34B-48F4-B148-A4505AB45ADA.jpeg'),(3,'test','testuser','testpass','test@gmail.com','2020-12-16 10:35:31',NULL),(4,'Garod','garodaj','dbbbe81e3fc9c6e1689d77157fb12c82','garod700@gmail.com','2020-12-17 07:46:52',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-11 16:03:21
+-- Dump completed on 2020-12-21 11:21:22

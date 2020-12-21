@@ -6,11 +6,12 @@
     use \Models\User;
 
     class Home extends Controller {
-        public function __constructor() {
-            if ($_SESSION["userID"]) {
+        public function __construct() {
+            if (isset($_SESSION["userID"]) && $_SESSION["userID"]) {
                 header('Location: /account');
                 exit;
             }
+            parent::__construct();
         }
 
         public function index() {
