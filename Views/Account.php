@@ -16,10 +16,6 @@
                         if (isset($this->user['image'])) {
                             $image = $target_dir.$this->user['image'];
                         }
-                        if (isset($_POST['Submit'])) {
-                            $target_file = $_SERVER['DOCUMENT_ROOT'].$target_dir.basename($_FILES["image"]["name"]);
-                            move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
-                        }
                         echo "<img class='profile-image' src='".$image."' />";
                     ?>
                     <div class="profile-details-names">
@@ -36,6 +32,9 @@
                     <input type="file" name="image"><br/><br/>
                     <input type="submit" value="Upload" name="Submit">
                 </form>
+                <?php 
+                    echo "<div class=login-error>".$this->uploadError."</div>";
+                ?>
             </div>
         </div>
     </body>

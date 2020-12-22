@@ -16,8 +16,37 @@
 
         public function index() {
             $user_model = new User;
-            if (isset($_POST['Submit'])) {
-                $updateUserImage = $user_model->updateUserImage(basename($_FILES["image"]["name"]), $_SESSION["userID"]);
+            $target_dir = "Views/images/";
+            $target_file = $_SERVER['DOCUMENT_ROOT'].$target_dir.basename($_FILES["image"]["name"]);
+            $upload = true;
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            if(isset($_POST["Submit"])) {
+                $check = getimagesize($_FILES["image"]["tmp_name"]);
+                if($check !== false) {
+                    $upload = true;
+                } else {
+                    $this->view->uploadError = "File is not an image.";
+                    $upload = false;
+                }
+                if (file_exists($target_file)) {
+                    $upload = false;
+                    $user_model->updateUserImage(basename($_FILES["image"]["name"]), $_SESSION["userID"]);
+                }
+                if ($_FILES["image"]["size"] > 500000) {
+                    $this->view->uploadError = "Sorry, your file is too large.";
+                    $upload = false;
+                }
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+                    $this->view->uploadError = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    $upload = false;
+                }
+                if ($upload) {
+                    $updateUserImage = $user_model->updateUserImage(basename($_FILES["image"]["name"]), $_SESSION["userID"]);
+                    $uploadUserImage = move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                    if (!$updateUserImage || !$uploadUserImage) {
+                        $this->view->uploadError = "Sorry, there was an error uploading your file.";
+                    }
+                }
             }
             $this->view->user = $user_model->getUser($_SESSION["userID"]);
             $this->view->render("Account");
