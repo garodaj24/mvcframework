@@ -1,5 +1,5 @@
-<div class="account-page">
-    <div class="account-page-content">
+<div class="page">
+    <div class="page-content">
         <div class="profile-details">
             <?php
                 $image = "https://robohash.org/test?size=200x200";
@@ -12,8 +12,6 @@
             <div class="profile-details-names">
                 <?php
                     echo "<div>name: ".$this->user['name']."</div>";
-                ?>
-                <?php
                     echo "<div>username: ".$this->user['username']."</div>";
                 ?>
             </div>

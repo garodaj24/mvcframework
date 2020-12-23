@@ -108,12 +108,12 @@ body {
     color: red;
     margin-bottom: 15px;
 }
-.account-page {
-    height: 500px;
+.page {
+    min-height: 500px;
     padding-top: 55px;
     background-color: white;
 }
-.account-page-content {
+.page-content {
     padding: 2rem;
 }
 .profile-details {
@@ -127,6 +127,12 @@ body {
 .profile-image {
     height: 200px;
     width: 200px;
+}
+.friend-profile-image {
+    height: 50px;
+    width: 50px;
+    border: 0.5px solid grey;
+    border-radius: 50%;
 }
 .logout-button {
     text-decoration: none;
@@ -147,4 +153,11 @@ body {
 
 .logout-button:active {
     text-decoration: none;
+}
+.friend-profile-details {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }

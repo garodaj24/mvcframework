@@ -53,6 +53,12 @@
             $this->view->user = $user_model->getUser($_SESSION["userID"]);
             $this->view->render("Account");
         }
+
+        public function friends() {
+            $user_model = new User;
+            $this->view->friends = $user_model->getFriends($_SESSION["userID"]);
+            $this->view->render("friends");
+        }
     }
 
 ?>

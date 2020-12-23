@@ -29,6 +29,12 @@
             return $user;
         }
 
+        public function getFriends($id) {
+            $query = "SELECT * FROM users WHERE NOT id=$id";
+            $friends = $this->db->select($query);
+            return $friends;
+        }
+
         public function updateUserImage($image, $id) {
             $where = "id=$id";
             $data = array("image" => $image);
