@@ -16,7 +16,7 @@
 
         public function index() {
             $user_model = new User;
-            $target_dir = "Views/public/images/";
+            $target_dir = "public/images/";
             $upload = true;
             if(isset($_POST["Submit"])) {
                 $target_file = $target_dir.basename($_FILES["image"]["name"]);

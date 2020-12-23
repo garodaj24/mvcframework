@@ -3,12 +3,12 @@
         <h3>Friends List:</h3>
         <?php
             $image = "https://robohash.org/test?size=50x50";
-            $target_dir = "Views/public/images/";
+            $target_dir = "/public/images/";
             foreach ($this->friends as $friend) {
                 echo "<div class='friend-profile-details'>";
                 echo "<div>".$friend['name']."</div>";
                 if (isset($friend['image'])) {
-                    $image = $target_dir.$this->user['image'];
+                    $image = $target_dir.$friend['image'];
                 }
                 echo "<img class='friend-profile-image' src='".$image."' alt='Your Profile Picture' />";
                 echo "</div>";
