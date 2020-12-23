@@ -3,7 +3,7 @@
         <div class="profile-details">
             <?php
                 $image = "https://robohash.org/test?size=200x200";
-                $target_dir = "Views/images/";
+                $target_dir = "Views/public/images/";
                 if (isset($this->user['image'])) {
                     $image = $target_dir.$this->user['image'];
                 }
