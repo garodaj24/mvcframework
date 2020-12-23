@@ -17,10 +17,10 @@
         public function index() {
             $user_model = new User;
             $target_dir = "Views/images/";
-            $target_file = $_SERVER['DOCUMENT_ROOT'].$target_dir.basename($_FILES["image"]["name"]);
             $upload = true;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             if(isset($_POST["Submit"])) {
+                $target_file = $target_dir.basename($_FILES["image"]["name"]);
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
                 $check = getimagesize($_FILES["image"]["tmp_name"]);
                 if($check !== false) {
                     $upload = true;
@@ -32,7 +32,7 @@
                     $upload = false;
                     $user_model->updateUserImage(basename($_FILES["image"]["name"]), $_SESSION["userID"]);
                 }
-                if ($_FILES["image"]["size"] > 500000) {
+                if ($_FILES["image"]["size"] > 1000000) {
                     $this->view->uploadError = "Sorry, your file is too large.";
                     $upload = false;
                 }
@@ -41,8 +41,10 @@
                     $upload = false;
                 }
                 if ($upload) {
-                    $updateUserImage = $user_model->updateUserImage(basename($_FILES["image"]["name"]), $_SESSION["userID"]);
                     $uploadUserImage = move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                    if ($uploadUserImage) {
+                        $updateUserImage = $user_model->updateUserImage(basename($_FILES["image"]["name"]), $_SESSION["userID"]);
+                    }
                     if (!$updateUserImage || !$uploadUserImage) {
                         $this->view->uploadError = "Sorry, there was an error uploading your file.";
                     }

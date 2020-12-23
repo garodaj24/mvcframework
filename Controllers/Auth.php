@@ -19,6 +19,11 @@
             $this->view->render("Login", false);
         }
 
+        public function logout() {
+            unset($_SESSION['userID']);
+            header('Location: /');
+        }
+
         public function registration() {
             if ($_POST) {
                 if ($_POST['name'] !== '' && $_POST['email'] !== '' && $_POST['username'] !== '' && $_POST['password'] !== '') {
@@ -50,10 +55,6 @@
                 }
             }
             $this->view->render("Registration", false);
-        }
-
-        public function verification() {
-            $this->view->render("Verification");
         }
     }
 ?>
