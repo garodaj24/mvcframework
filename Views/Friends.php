@@ -6,7 +6,7 @@
             $target_dir = "/public/images/";
             foreach ($this->friends as $friend) {
                 echo "<div class='friend-profile-details'>";
-                echo "<div>".$friend['name']."</div>";
+                echo "<div><a class='friends-link' href='/account/user/".$friend['id']."'>".$friend['name']."<a/></div>";
                 if (isset($friend['image'])) {
                     $image = $target_dir.$friend['image'];
                 }

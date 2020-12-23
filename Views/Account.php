@@ -16,13 +16,17 @@
                 ?>
             </div>
         </div>
-        <form action="/account" enctype="multipart/form-data" method="post">
-            Select image to upload:<br/><br/>
-            <input type="file" name="image"><br/><br/>
-            <input type="submit" value="Upload" name="Submit">
-        </form>
-        <?php 
-            echo "<div class=login-error>".$this->uploadError."</div>";
+        <?php
+            if (!isset($this->othersProfile)) {
+                echo "
+                <form action='/account' enctype='multipart/form-data' method='post'>
+                    Select image to upload:<br/><br/>
+                    <input type='file' name='image'><br/><br/>
+                    <input type='submit' value='Upload' name='Submit'>
+                </form>
+                ";
+                echo "<div class=login-error>".$this->uploadError."</div>";
+            }
         ?>
     </div>
 </div>

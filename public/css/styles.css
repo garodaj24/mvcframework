@@ -161,3 +161,23 @@ body {
     justify-content: space-between;
     margin-bottom: 20px;
 }
+.friends-link {
+    text-decoration: none;
+}
+.friends-link:link {
+    text-decoration: none;
+    color: black;
+}
+
+.friends-link:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.friends-link:hover {
+    text-decoration: none;
+}
+
+.friends-link:active {
+    text-decoration: none;
+}
